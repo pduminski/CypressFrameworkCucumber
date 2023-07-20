@@ -1,3 +1,7 @@
+import { homepageActions } from "../actions/homepageActions";
+import { loginActions } from "../actions/loginActions";
+import homePage from "../pageObjects/homePage";
+
 import {
   Before,
   Given,
@@ -14,19 +18,20 @@ Before(() => {
 });
 
 Given("I access WebdriverUniversity Login Portal page", () => {
-  cy.visit("http://www.webdriveruniversity.com/Login-Portal/index.html?");
+  homepageActions.visitHomepage();
+  homepageActions.clickHeader(homePage.loginPortalHeader);
 });
 
 When("I enter a username {word}", (userName) => {
-  cy.get("#text").type(userName);
+  loginActions.provideUsername(userName);
 });
 
-And("I enter a password {word}", (userName) => {
-  cy.get("#password").type(userName);
+And("I enter a password {word}", (password) => {
+  loginActions.providePassword(password);
 });
 
 And("I click the login button", () => {
-  cy.get("#login-button").click();
+  loginActions.clickLoginButton();
   cy.on("window:alert", stub);
 });
 
