@@ -1,0 +1,41 @@
+{
+  "name": "cypresscucumber",
+  "version": "1.0.0",
+  "description": "Cypress Framework with Cucumber and Mochawesome",
+  "main": "index.js",
+  "scripts": {
+    "triggerAllTests-headless": "npx cypress run",
+    "triggerAllTests-headed": "npx cypress run --headed",
+    "triggerAllTests-chrome": "npx cypress run --browser chrome",
+    "triggerAllTests-dashboard": "npx cypress run --record --key 503dc14b-98d7-4fe0-82e9-4aaf1768c4b8",
+    "triggerAllTests-webdriveruni": "npx cypress run --spec cypress/e2e/webdriver-uni",
+    "triggerAllTests-simpletestsite": "npx cypress run --spec cypress/e2e/simpletestsite",
+    "triggerAllTests-webdriveruni-checkboxes": "npx cypress run --spec cypress/e2e/webdriver-uni/checkboxes.js",
+    "triggerAllTests-cucumberTests": "npx cypress run --spec cypress/e2e/webdriver-uni/features/*.feature --browser chrome",
+    "junit-merge": "npx junit-merge -d cypress/results/junit -o cypress/results/junit/results.xml",
+    "delete-junit-report": "rm -rf cypress/results/junit/results.xml",
+    "delete-results": "rm -rf cypress/results/* || true",
+    "mochawesome-merge": "npx mochawesome-merge cypress/results/mochawesome/*.json > mochawesome.json && npx marge mochawesome.json",
+    "delete-mochawesome-report": "rm -rf mochawesome-report/* || true",
+    "cypress-regression-pack-webdriver-uni": "npm run delete-results && npm run delete-mochawesome-report && npm run triggerAllTests-webdriveruni && npm run mochawesome-merge"
+  },
+  "author": "PD",
+  "license": "ISC",
+  "devDependencies": {
+    "cucumber-json-merge": "0.0.8",
+    "cypress": "^12.17.1",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "cypress-mochawesome-reporter": "3.5.1",
+    "cypress-multi-reporters": "1.6.3",
+    "junit-merge": "2.0.0",
+    "mocha": "10.2.0",
+    "mocha-junit-reporter": "2.2.1",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "4.3.0",
+    "mochawesome-report-generator": "6.2.0"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": false,
+    "stepDefinitions": "cypress/support/stepDefinitions"
+  }
+}
