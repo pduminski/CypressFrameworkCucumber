@@ -22,25 +22,20 @@
   "author": "PD",
   "license": "ISC",
   "devDependencies": {
+    "cucumber-json-merge": "0.0.8",
     "cypress": "^12.17.1",
-    "cypress-cucumber-preprocessor": "4.3.1",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "cypress-mochawesome-reporter": "3.5.1",
+    "cypress-multi-reporters": "1.6.3",
+    "junit-merge": "2.0.0",
     "mocha": "10.2.0",
     "mocha-junit-reporter": "2.2.1",
     "mochawesome": "^7.1.3",
     "mochawesome-merge": "4.3.0",
-    "mochawesome-report-generator": "6.2.0",
-    "cypress-mochawesome-reporter": "3.5.1",
-    "cypress-multi-reporters": "1.6.3",
-    "cucumber-json-merge": "0.0.8",
-    "junit-merge": "2.0.0"
+    "mochawesome-report-generator": "6.2.0"
   },
   "cypress-cucumber-preprocessor": {
-    "stepDesfinitions": "cypress/support/stepDefinitions/**/",
-    "cucumberJson": {
-      "generate": true,
-      "outputFolder": "results/cucumber/json",
-      "filePrefix": "",
-      "fileSuffix": ".cucumber"
-    }
+    "nonGlobalStepDefinitions": false,
+    "stepDefinitions": "cypress/support/stepDefinitions"
   }
 }
