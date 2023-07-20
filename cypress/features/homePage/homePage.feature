@@ -1,11 +1,5 @@
 Feature: Main page should have all the links functional
 
-
-    Scenario: Constact US functionality works
-        Given I am on webdriveruniversity webpage
-        When I click "CONTACT US" header
-        Then I should land on the correct URL "Contact-Us"
-
     Scenario Outline: Constact US functionality works with different headers
         Given I am on webdriveruniversity webpage
         When I click "<headerName>" header
